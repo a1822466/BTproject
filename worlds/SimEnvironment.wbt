@@ -1,0 +1,52 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kuka/youbot/protos/Youbot.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kuka/youbot/protos/KukaBox.proto"
+
+WorldInfo {
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.12550698002765223 -0.05421792219870202 0.9906101225390309 3.95032306988466
+  position 1.8155049043734177 1.6798639280730416 0.774605847443853
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+DEF youBot Youbot {
+  translation 0 -0.23 0.12
+  controller "ObjectYoubot"
+  supervisor TRUE
+}
+Floor {
+}
+DEF kukabox KukaBox {
+  translation 0.59 -0.23 0.02
+}

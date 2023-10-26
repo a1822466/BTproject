@@ -1,0 +1,39 @@
+<root BTCPP_format="4" >
+    <BehaviorTree ID="MainTree">
+       	<Sequence name="root_sequence">
+            <Wait/>
+	    
+	    <getPositions boxes="{boxes}" bt="{botPos}"/>
+	    <showPositions boxes="{boxes}" bt="{botPos}"/>
+	    <frontClear/>
+	    <chooseTarget target="{target}"/>
+	    <TurnToBox target="{target}"/>
+
+	    <ReactiveFallback>
+		<atTarget target="{target}"/>
+		<MoveToBox target="{target}"/>
+	    </ReactiveFallback>
+	    <atTarget target="{target}"/>
+	    <alignWithBox target="{target}"/>
+	    <OpenGripper name="open_gripper"/>
+	    <ArmGrabBox name="arm_grab_position"/>
+	    <CloseGripper name="close_gripper"/>
+	    <ArmDropBox name="arm_grab_position"/>
+	    <OpenGripper name="open_gripper"/>
+	    <holdingTarget target="{target}"/>
+	    <TurnToBox target="middle"/>
+	    <ReactiveFallback>
+		<atMiddle/>
+		<MoveToBox target="middle"/>
+	    </ReactiveFallback>
+	    
+	    <CloseGripper name="close_gripper"/>
+	    <ArmGrabBox name="arm_grab_position"/>
+	    <OpenGripper name="open_gripper"/>
+	    <ArmDropBox name="arm_grab_position"/>
+	    <getPositions boxes="{boxes}" bt="{botPos}"/>
+	    <targetsRetrieved boxes="{boxes}"/>
+	    <EndSimulationAfter10s name="end_simulation"/>
+        </Sequence>
+    </BehaviorTree>
+</root>

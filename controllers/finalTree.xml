@@ -1,0 +1,76 @@
+<root BTCPP_format="4" >
+    <BehaviorTree ID="MainTree">
+       	<Fallback>
+            <Sequence>
+		<getPositions boxes="{boxes}" bt="{botPos}"/>
+		<targetsRetrieved boxes="{boxes}"/>
+		<EndSimulation/>
+	    </Sequence>
+	    <Fallback>
+		<Sequence>
+		    <getPositions boxes="{boxes}" bt="{botPos}"/>
+		    <Fallback>
+			<holdingAnyTarget/>
+			<chooseTarget target="{target}"/>
+		    </Fallback>
+		    <Fallback>
+			<Sequence name="middleSequence">
+			    <holdingTarget target="{target}"/>
+			    <Fallback name="midActions">
+				<Sequence name="placeBox">
+			    	    <atMiddle/>
+				    <CloseGripper/>
+	    			    <ArmGrabBox/>
+	    			    <OpenGripper/>
+	    			    <ArmDropBox/>
+				</Sequence>
+				<Sequence name="goToMid">
+			    	    <TurnToBox target="middle"/>
+				    <Fallback>
+					<Sequence name="movetoMid">
+			    		    <frontClear/>
+					    <ReactiveFallback>
+						<atMiddle/>
+						<frontNotClear/>
+						<MoveToBox target="middle"/>
+	    				    </ReactiveFallback>
+					</Sequence>
+					<Wait/>
+				    </Fallback>
+				</Sequence>
+			    </Fallback>
+			</Sequence>
+			<Sequence name="retrieveSequence">
+			    <Fallback>
+				<atTarget target="{target}"/>
+				<Sequence>
+				    <TurnToBox target="{target}"/>
+				    <ReactiveSequence>
+				    	<frontClear/>
+					<ReactiveFallback>
+					    <atTarget target="{target}"/>
+					    <frontNotClear/>
+					    <MoveToBox target="{target}"/>
+	    				</ReactiveFallback>
+				    </ReactiveSequence>
+				</Sequence>
+			    </Fallback>
+			    <Fallback>
+				<holdingTarget target="{target}"/>
+				<Sequence>
+				    <alignWithBox target="{target}"/>
+	    			    <OpenGripper/>
+	    			    <ArmGrabBox/>
+	    			    <CloseGripper/>
+	    			    <ArmDropBox/>
+	    			    <OpenGripper/>
+				</Sequence>
+			    </Fallback>
+			</Sequence>
+		    </Fallback>
+		</Sequence>
+		<Wait/>
+	    </Fallback>
+        </Fallback>
+    </BehaviorTree>
+</root>

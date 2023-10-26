@@ -1,0 +1,110 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kuka/youbot/protos/Youbot.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/floors/protos/Floor.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/kuka/youbot/protos/KukaBox.proto"
+
+WorldInfo {
+  contactProperties [
+    ContactProperties {
+      material1 "InteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation -0.785 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+    ContactProperties {
+      material1 "ExteriorWheelMat"
+      coulombFriction [
+        0, 2, 0
+      ]
+      frictionRotation 0.785 0
+      bounce 0
+      forceDependentSlip [
+        10, 0
+      ]
+    }
+  ]
+}
+Viewpoint {
+  orientation -0.016762379295894577 -0.9997973141172644 0.011151382167470466 5.704168353350765
+  position -7.808406679743612 -0.5128207645808277 4.971513543413844
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+}
+DEF youBot Youbot {
+  translation 0 -0.32 0.105
+  controller "<none>"
+  supervisor TRUE
+  bodySlot [
+    DEF distSens DistanceSensor {
+      translation 0.28 0 -0.04
+      children [
+        DEF distbox Shape {
+          appearance PBRAppearance {
+          }
+          geometry Box {
+            size 0.02 0.02 0.02
+          }
+        }
+      ]
+      name "distSens"
+      boundingObject USE distbox
+    }
+    DEF InUnit InertialUnit {
+      name "InUnit"
+    }
+  ]
+}
+Floor {
+  size 5 5
+  appearance PBRAppearance {
+    baseColor 0.6 0.6 0.6
+    metalness 0
+  }
+}
+DEF kukabox1 KukaBox {
+  translation 2 -2 0.02
+  rotation 0 0 1 0.785398
+}
+DEF playerBot Youbot {
+  translation 0 0.32 0.105
+  name "youBot(1)"
+  controller "YoubotTeleoperation"
+}
+DEF kukabox2 KukaBox {
+  translation -2 -2 0.02
+  rotation 0 0 1 0.785398
+  name "Kuka box(1)"
+}
+DEF kukabox3 KukaBox {
+  translation -2 2 0.02
+  rotation 0 0 1 0.785398
+  name "Kuka box(2)"
+}
+DEF kukabox4 KukaBox {
+  translation 2 2 0.02
+  rotation 0 0 1 0.785398
+  name "Kuka box(3)"
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 1 0 0
+        metalness 0
+      }
+      geometry Box {
+        size 0.8 0.8 0.003
+      }
+    }
+  ]
+}
