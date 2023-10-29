@@ -1,2 +1,0 @@
-C:\msys64\mingw64\bin\ar.exe qc lib\libbt_sample_nodes.a CMakeFiles/bt_sample_nodes.dir/crossdoor_nodes.cpp.obj CMakeFiles/bt_sample_nodes.dir/dummy_nodes.cpp.obj CMakeFiles/bt_sample_nodes.dir/movebase_node.cpp.obj
-C:\msys64\mingw64\bin\ranlib.exe lib\libbt_sample_nodes.a

@@ -1,2 +1,0 @@
-C:\msys64\mingw64\bin\ar.exe qc liblexy_file.a CMakeFiles/lexy_file.dir/input/file.cpp.obj
-C:\msys64\mingw64\bin\ranlib.exe liblexy_file.a
