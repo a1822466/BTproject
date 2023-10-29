@@ -65,8 +65,9 @@
 ###
 ###-----------------------------------------------------------------------------
 
-INCLUDE = -I"C:\Users\Alex\Documents\BehaviorTree.CPP\include"
-LIBRARIES = -L"C:\Users\Alex\Documents\BehaviorTree.CPP\build" -l libbehaviortree_cpp
+INCLUDE = -I"..\..\libraries\BehaviorTree.CPP\include"
+
+LIBRARIES = -L"..\..\libraries\BehaviorTree.CPP\build" -l libbehaviortree_cpp
 
 ### Do not modify: this includes Webots global Makefile.include
 null :=
